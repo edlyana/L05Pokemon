@@ -17,7 +17,6 @@ const styles = StyleSheet.create({
         flex: 1,
         textAlign: 'center',
         fontSize: 20,
-        // margin: 10,
         fontWeight: 'bold',
     },
     headerText:{
@@ -69,7 +68,7 @@ const renderItem = ({item}) => {
 
 const App = () => {
     return (
-        <View style={[styles.container, { marginBottom: 80 }]}>
+        <View style={[styles.container, { marginBottom: 150}]}>
             <StatusBar hidden={true}/>
             <View style={styles.buttonContainer}>
                 <Button title="Add New Pokemon" />
