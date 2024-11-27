@@ -44,18 +44,21 @@ const Edit = ({navigation, route}) => {
 
                 <View style={{margin:10, flex:1}}>
                     <Button title="DELETE" onPress={() => {
-                        let indexNum = 0;
-                        if (route.params.type == "Grass") {
-                            indexNum = 1;
-                        }
-                        if (route.params.type == "Psychic") {
-                            indexNum = 2;
-                        }
+                        let sectionIndex = dataSource.findIndex(
+                            (section) => section.title === route.params.type
+                        );
+                        // let indexNum = 0;
+                        // if (route.params.type == "Grass") {
+                        //     indexNum = 1;
+                        // }
+                        // if (route.params.type == "Psychic") {
+                        //     indexNum = 2;
+                        // }
                         Alert.alert("Are you sure?", '',
                             [{text:"Yes", onPress: () => {
-                                    dataSource[indexNum].data.splice(route.params.index,1);
-                                    navigation.navigate('Home');
-                                }},
+                                dataSource[sectionIndex].data.splice(route.params.index, 1);
+                                navigation.navigate("Home");
+                            }},
                                 {text:"No"}
                             ])
                     }}/>
