@@ -5,6 +5,7 @@ import {TextInput, View, Text, Button, Alert} from "react-native";
 const Edit = ({navigation, route}) => {
     const [name, setName] = useState(route.params.key); // .key is being called here by Home.js   // letter = name
     const [pokeNum, setPokeNum] = useState(route.params.num.toString());
+    const [type, setType] = useState(route.params.type);
     return (
         <View style={{padding: 10}}>
             <View style={{padding: 10}}>
@@ -19,17 +20,26 @@ const Edit = ({navigation, route}) => {
 
             <View style={{flexDirection:'row'}}>
                 <View style={{margin:10, flex:1}}>
-                    <Button title="SAVE" onPress={() => {
-                        let indexNum = 0;
-                        if (route.params.type == "Grass") {
-                            indexNum = 1;
-                        }
-                        if (route.params.type == "Psychic") {
-                            indexNum = 2;
-                        }
-                        dataSource[indexNum].data[route.params.index] = {key: name, num: parseInt(pokeNum)};
-                        navigation.navigate("Home");
-                    }}/>
+                    {/*<Button title="SAVE" onPress={() => {*/}
+                    {/*    let indexNum = 0;*/}
+                    {/*    if (route.params.type === "Grass") {*/}
+                    {/*        indexNum = 1;*/}
+                    {/*    }*/}
+                    {/*    if (route.params.type === "Psychic") {*/}
+                    {/*        indexNum = 2;*/}
+                    {/*    }*/}
+                    {/*    dataSource[indexNum].data[route.params.index] = {key: name, num: parseInt(pokeNum)};*/}
+                    {/*    navigation.navigate("Home");*/}
+                    {/*}}/>*/}
+
+                    <Button
+                        title="SAVE"
+                        onPress={() => {
+                            let sectionIndex = dataSource.findIndex((section) => section.title === route.params.type);
+                            dataSource[sectionIndex].data[route.params.index] = { key: name, num: parseInt(pokeNum) };
+                            navigation.navigate("Home");
+                        }}
+                    />
                 </View>
 
                 <View style={{margin:10, flex:1}}>

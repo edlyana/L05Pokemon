@@ -45,7 +45,7 @@ const Home = ({navigation}) => {
         let imageLink = "https://dz3we2x72f7ol.cloudfront.net/expansions/151/en-us/SV3pt5_EN_" + item.num + "-2x.png"
         return(
             <TouchableOpacity style={styles.opacityStyle} onPress={() => {
-                navigation.navigate("Edit", {index:index, type:section.title, key:item.key, num:item.num});
+                navigation.navigate("Edit", {index: index, type: section.title, key: item.key, num: item.num});
             }}>
                 <Text style={styles.textStyle}>{item.key}</Text>
                 <Image style={styles.imgCard} source={{uri: imageLink}} />
